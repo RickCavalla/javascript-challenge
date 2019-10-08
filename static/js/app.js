@@ -35,8 +35,11 @@ uniqueShapes.forEach((ufoShape) => {
     select_item.text(ufoShape);
 });
 
-/* Click the filter button */
-ufo_button.on("click", function() {
+// start_event = new Event('click');
+// ufo_button.dispatchEvent(start_event);
+// simulate(ufo_button, "click");
+
+function filterData() {
     /* Grab our filtering input */
     var dateValue = ufo_date.property("value");
     var shapeValue = ufo_select.property("value");
@@ -102,4 +105,10 @@ ufo_button.on("click", function() {
         var ufo_td = ufo_tr.append("td");
         ufo_td.text(ufoReport.comments);
     });
-});
+}
+
+/* Click the filter button */
+ufo_button.on("click", filterData);
+
+/* Do a filter on everything to start page */
+filterData();
