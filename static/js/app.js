@@ -37,8 +37,10 @@ uniqueShapes.forEach((ufoShape) => {
 
 /* Click the filter button */
 ufo_button.on("click", function() {
+    /* Grab our filtering input */
     var dateValue = ufo_date.property("value");
     var shapeValue = ufo_select.property("value");
+    /* We are going to ignore case for comment search, so convert everything to lower case */
     var containsValue = ufo_contains.property("value").toLowerCase();
 
     /* start with all data */
@@ -60,6 +62,7 @@ ufo_button.on("click", function() {
 
     /* Only do string search if search value is not blank */
     if (containsValue != "") {
+        /* We are ignoring case, so convert comments to lower case in filter */
         filteredData = filteredData.filter(ufo => ufo.comments.toLowerCase().search(containsValue) >= 0)
     }
 
